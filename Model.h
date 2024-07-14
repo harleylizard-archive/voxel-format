@@ -8,14 +8,20 @@
 constexpr std::uint32_t SIZE = 16 * 16 * 16;
 constexpr std::uint16_t COMPACT_SIZE = 8 * 8 * 8;
 
+constexpr std::size_t indexOf(int x, int y, int z);
+
+constexpr std::uint8_t bit(std::uint32_t& i);
+
+using Voxels = std::array<std::uint32_t, SIZE>;
+
 class Model final {
 public:
-	Model(const std::array<std::uint32_t, SIZE>& array);
+	Model(const std::string& path);
 
-	const std::uint32_t get(int x, int y, int z);
+	std::uint32_t get(int x, int y, int z) const;
 
 private:
-	const std::array<std::uint32_t, SIZE> voxels;
+	std::unique_ptr<Voxels> voxels;
 };
 
 class MutableModel final {
@@ -26,11 +32,5 @@ public:
 
 	void writeTo(const std::string& path);
 private:
-	std::array<std::uint32_t, SIZE> voxels;
+	std::unique_ptr<Voxels> voxels;
 };
-
-std::size_t indexOf(int x, int y, int z);
-
-std::uint8_t toBit(std::uint32_t& i);
-
-const Model readFrom(const std::string& path);

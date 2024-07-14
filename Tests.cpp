@@ -40,7 +40,7 @@ public:
 	}
 
 	void testReadModel() {
-		Model model = readFrom("./model.bin");
+		Model model("./model.bin");
 
 		auto i = model.get(0, 14, 0);
 		std::cout << i << std::endl;
