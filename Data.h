@@ -10,6 +10,8 @@ public:
 
 	~InputStream();
 
+	const std::uint8_t readByte();
+
 	const std::uint32_t readInt();
 
 private:
@@ -21,6 +23,8 @@ public:
 	OutputStream(const std::string& path);
 
 	~OutputStream();
+
+	void writeByte(std::uint8_t b);
 
 	void writeInt(std::uint32_t i);
 	

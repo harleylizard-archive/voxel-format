@@ -365,3 +365,4 @@ FodyWeavers.xsd
 .conan
 conan
 test.bin
+model.bin
